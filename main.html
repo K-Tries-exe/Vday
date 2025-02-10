@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love for You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #b30000;
+            margin: 0;
+            padding: 0;
+            cursor: url('https://cdn-icons-png.flaticon.com/128/1077/1077035.png'), auto;
+            overflow: hidden;
+        }
+        .container {
+            padding: 50px;
+            animation: fadeIn 2s ease-in;
+        }
+        h1 {
+            font-size: 3em;
+            animation: slideIn 2s ease-in-out;
+            cursor: pointer;
+        }
+        h1:hover {
+            color: #ff0000;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transform: rotate(-5deg);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: rotate(0deg) scale(1.1);
+        }
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+            cursor: pointer;
+        }
+        .message:hover {
+            color: #ff0000;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 1em;
+            color: #800000;
+        }
+        .falling-hearts {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .quote-box {
+            font-size: 1.5em;
+            font-style: italic;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+            cursor: pointer;
+        }
+        .quote-box:hover {
+            color: #ff0000;
+        }
+        .gift-box {
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            background: url('https://cdn-icons-png.flaticon.com/128/1046/1046894.png') no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    <script>
+        function updateQuote() {
+            const quotes = [
+                "You are my today and all of my tomorrows.",
+                "Every love story is beautiful, but ours is my favorite.",
+                "I love you more than words can express.",
+                "You are my sunshine on a rainy day."
+            ];
+            document.getElementById('quote-box').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+        }
+        setInterval(updateQuote, 5000);
+
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'falling-hearts';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+        }
+        setInterval(createHearts, 1000);
+
+        function showGiftMessage() {
+            alert("Surprise! I Love You! 🎁❤️");
+        }
+
+        function showImageMessage() {
+            alert("This is one of my favorite moments with you! ❤️");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 onclick="alert('I Love You More Than Words Can Say! ❤️')">My Love for You</h1>
+        <div class="heart">❤️</div>
+        <p class="message" onclick="alert('You make my world brighter every day!')">Every moment with you is a blessing. This website is a small way to show how much you mean to me.</p>
+        <div class="quote-box" id="quote-box" onclick="updateQuote()">You are my today and all of my tomorrows.</div>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/200" alt="Us together" onclick="showImageMessage()">
+            <img src="https://via.placeholder.com/200" alt="A special moment" onclick="showImageMessage()">
+            <img src="https://via.placeholder.com/200" alt="Our laughter" onclick="showImageMessage()">
+        </div>
+        <p class="message">I cherish every smile, every laugh, and every moment we share. Forever and always. ❤️</p>
+        <div class="gift-box" onclick="showGiftMessage()"></div>
+        <p class="song">Our Song: <a href="#" target="_blank">Click to Play</a></p>
+        <div class="footer">Made with love, just for you.</div>
+    </div>
+</body>
+</html>
