@@ -17,8 +17,30 @@
             overflow-y: auto;
             position: relative;
         }
+        .navbar {
+            background-color: #ff9999;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            background-color: #ff6666;
+            border-radius: 10px;
+        }
         .container {
-            padding: 50px;
+            padding: 80px 50px 50px; /* Adjusted for fixed navbar */
             animation: fadeIn 2s ease-in;
         }
         h1 {
@@ -78,18 +100,6 @@
             from { opacity: 0; transform: scaleX(0); }
             to { opacity: 1; transform: scaleX(1); }
         }
-        .falling-hearts {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            font-size: 20px;
-            color: red;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-100px); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
         .quote-box {
             font-size: 1.5em;
             font-style: italic;
@@ -128,6 +138,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
     <div class="container">
         <h1 onclick="alert('I Love You More Than Words Can Say! ❤️')">My Love for You</h1>
         <p class="message">Every moment with you is a blessing. This website is a small way to show how much you mean to me.</p>
