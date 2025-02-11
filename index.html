@@ -31,19 +31,25 @@
         .gallery {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
         .gallery img {
-            width: 500px;
-            height: 500px;
+            width: 300px;
+            height: auto;
             object-fit: cover;
             border-radius: 10px;
             transform: rotate(-5deg);
             transition: transform 0.3s;
             cursor: pointer;
+            padding: 20px;
+            background: white;
+            border: 5px solid #ddd;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         }
         .gallery img:hover {
-            transform: rotate(0deg) scale(1.1);
+            transform: rotate(0deg) scale(1.05);
         }
         .message {
             font-size: 1.5em;
@@ -58,20 +64,6 @@
             margin-top: 50px;
             font-size: 1em;
             color: #800000;
-        }
-        .falling-hearts {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: red;
-            border-radius: 50%;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-100px); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
         }
         .quote-box {
             font-size: 1.5em;
@@ -101,29 +93,6 @@
         }
     </style>
     <script>
-        function updateQuote() {
-            const quotes = [
-                "You are my today and all of my tomorrows.",
-                "Every love story is beautiful, but ours is my favorite.",
-                "I love you more than words can express.",
-                "You are my sunshine on a rainy day."
-            ];
-            document.getElementById('quote-box').innerText = quotes[Math.floor(Math.random() * quotes.length)];
-        }
-        setInterval(updateQuote, 5000);
-
-        function createHearts() {
-            for (let i = 0; i < 10; i++) {
-                let heart = document.createElement('div');
-                heart.className = 'falling-hearts';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 5000);
-            }
-        }
-        setInterval(createHearts, 1000);
-
         function showGiftMessage() {
             alert("Surprise! I Love You! 🎁❤️");
         }
@@ -138,7 +107,7 @@
         <h1 onclick="alert('I Love You More Than Words Can Say! ❤️')">My Love for You</h1>
         <div class="heart">❤️</div>
         <p class="message" onclick="alert('You make my world brighter every day!')">Every moment with you is a blessing. This website is a small way to show how much you mean to me.</p>
-        <div class="quote-box" id="quote-box" onclick="updateQuote()">You are my today and all of my tomorrows.</div>
+        <div class="quote-box" id="quote-box">You are my today and all of my tomorrows.</div>
         <div class="gallery">
             <img src="eating.jpg" alt="Us together" onclick="showImageMessage()">
             <img src="sleep.jpeg" alt="Sleeping Beauty" onclick="showImageMessage()">
