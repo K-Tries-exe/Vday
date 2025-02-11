@@ -98,13 +98,6 @@
         }
     </style>
     <script>
-        function openModal(imageSrc) {
-            document.getElementById('modalImage').src = imageSrc;
-            document.getElementById('imageModal').style.display = 'block';
-        }
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
         function createHearts() {
             for (let i = 0; i < 10; i++) {
                 let heart = document.createElement('div');
@@ -140,24 +133,20 @@
         <p class="message">Every moment with you is a blessing. This website is a small way to show how much you mean to me.</p>
         <div id="quote-box" class="quote-box">You are my today and all of my tomorrows.</div>
         <div class="gallery">
-            <div class="polaroid" onclick="openModal('eating.jpg')">
+            <div class="polaroid">
                 <img src="eating.jpg" alt="Us together">
                 <p class="caption">KAMERAYI ÖP 😘</p>
             </div>
-            <div class="polaroid" onclick="openModal('sleep.jpeg')">
+            <div class="polaroid">
                 <img src="sleep.jpeg" alt="Sleeping Beauty">
                 <p class="caption">UYUYAN GÜZEL 😴</p>
             </div>
-            <div class="polaroid" onclick="openModal('museum.jpg')">
+            <div class="polaroid">
                 <img src="museum.jpg" alt="Our laughter">
                 <p class="caption">FOTOBOMB 💣 </p>
             </div>
         </div>
         <p class="message">I cherish every smile, every laugh, and every moment we share. Forever and always. ❤️</p>
-        <div id="imageModal" class="modal" onclick="closeModal()">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img class="modal-content" id="modalImage">
-        </div>
         <div class="footer">Made with love, just for you.</div>
     </div>
 </body>
