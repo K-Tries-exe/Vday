@@ -39,6 +39,16 @@
             background-color: #ff6666;
             border-radius: 10px;
         }
+        .falling-hearts {
+            position: fixed;
+            top: -50px;
+            left: 50%;
+            font-size: 20px;
+            color: red;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: -1;
+        }
         .container {
             padding: 80px 50px 50px; /* Adjusted for fixed navbar */
             animation: fadeIn 2s ease-in;
@@ -108,18 +118,29 @@
         }
     </style>
     <script>
+        let maxHearts = 100;
+        let currentHearts = 0;
+
         function createHearts() {
-            for (let i = 0; i < 10; i++) {
-                let heart = document.createElement('div');
-                heart.className = 'falling-hearts';
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 5000);
-            }
+            if (currentHearts >= maxHearts) return;
+
+            let heart = document.createElement('div');
+            heart.className = 'falling-hearts';
+            heart.innerHTML = '❤️';
+
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = (Math.random() * 5 + 3) + 's';
+
+            document.body.appendChild(heart);
+            currentHearts++;
+
+            setTimeout(() => {
+                heart.remove();
+                currentHearts--;
+            }, 8000);
         }
-        setInterval(createHearts, 1000);
+        setInterval(createHearts, 500);
         function rotateQuotes() {
             const quotes = [
                 "You are my today and all of my tomorrows.",
