@@ -32,7 +32,7 @@
         .gallery {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
             margin-top: 20px;
         }
@@ -44,9 +44,9 @@
             padding: 15px;
             border: 5px solid #ddd;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-            width: 230px;
-            height: 350px;
-            transform: rotate(-5deg);
+            width: 250px;
+            height: 370px;
+            transform: rotate(-3deg);
             transition: transform 0.3s;
             position: relative;
             cursor: pointer;
@@ -56,12 +56,13 @@
         }
         .polaroid img {
             width: 100%;
-            height: 200px;
-            object-fit: contain;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 5px solid #ddd;
         }
         .caption {
             position: absolute;
-            bottom: 30px;
+            bottom: 25px;
             width: 100%;
             text-align: center;
             font-family: 'Permanent Marker', cursive;
@@ -94,6 +95,7 @@
             margin: auto;
             position: relative;
             top: 10%;
+            border-radius: 10px;
         }
         .close {
             position: absolute;
