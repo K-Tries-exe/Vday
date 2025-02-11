@@ -35,21 +35,31 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-        .gallery img {
-            width: 300px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 10px;
-            transform: rotate(-5deg);
-            transition: transform 0.3s;
-            cursor: pointer;
-            padding: 20px;
+        .polaroid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background: white;
+            padding: 20px 20px 50px 20px;
             border: 5px solid #ddd;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            transform: rotate(-5deg);
+            transition: transform 0.3s;
         }
-        .gallery img:hover {
+        .polaroid:hover {
             transform: rotate(0deg) scale(1.05);
+        }
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .caption {
+            margin-top: 15px;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2em;
+            color: #333;
         }
         .message {
             font-size: 1.5em;
@@ -101,6 +111,7 @@
             alert("This is one of my favorite moments with you! ❤️");
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -109,9 +120,18 @@
         <p class="message" onclick="alert('You make my world brighter every day!')">Every moment with you is a blessing. This website is a small way to show how much you mean to me.</p>
         <div class="quote-box" id="quote-box">You are my today and all of my tomorrows.</div>
         <div class="gallery">
-            <img src="eating.jpg" alt="Us together" onclick="showImageMessage()">
-            <img src="sleep.jpeg" alt="Sleeping Beauty" onclick="showImageMessage()">
-            <img src="museum.jpg" alt="Our laughter" onclick="showImageMessage()">
+            <div class="polaroid" onclick="showImageMessage()">
+                <img src="eating.jpg" alt="Us together">
+                <p class="caption">Dinner Date 🍽️</p>
+            </div>
+            <div class="polaroid" onclick="showImageMessage()">
+                <img src="sleep.jpeg" alt="Sleeping Beauty">
+                <p class="caption">Sweet Dreams 😴</p>
+            </div>
+            <div class="polaroid" onclick="showImageMessage()">
+                <img src="museum.jpg" alt="Our laughter">
+                <p class="caption">Museum Memories 🏛️</p>
+            </div>
         </div>
         <p class="message">I cherish every smile, every laugh, and every moment we share. Forever and always. ❤️</p>
         <div class="gift-box" onclick="showGiftMessage()"></div>
