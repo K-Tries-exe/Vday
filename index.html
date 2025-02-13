@@ -47,7 +47,8 @@
             color: red;
             opacity: 0.8;
             animation: fall 5s linear infinite;
-            z-index: -1;
+            z-index: 0;
+            pointer-events: none;
         }
         .container {
             padding: 80px 50px 50px;
@@ -111,8 +112,14 @@
             to { opacity: 1; transform: scaleX(1); }
         }
         @keyframes fall {
-            from { transform: translateY(-50px); opacity: 1; }
-            to { transform: translateY(100vh); opacity: 0; }
+            from {
+                transform: translateY(-50px);
+                opacity: 0.8;
+           }
+           to {
+              transform: translateY(100vh);
+              opacity: 0.5;
+           }
        }
         .quote-box {
             font-size: 1.5em;
@@ -148,7 +155,7 @@
         function rotateQuotes() {
             const quotes = [
                 "Köşedeki çiçekçi seni sordu bu sabah",
-                "Bur′da yok" "dedim, selam söyledi",
+                "Bur′da yok, dedim, selam söyledi",
                 "Tazeymiş gülleri yokluğun gibi",
                 "Yürüdüm biraz, seni düşledim, umudumu sen'le süsledim",
                 "Ne dar sokaklar ne boş duraklar seni unutmama yardım etti",
