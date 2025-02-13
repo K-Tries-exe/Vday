@@ -161,12 +161,16 @@ O zamana kadar, her zaman yaptığım gibi seni yanımda taşımaya devam edece�
                 giftBox.classList.add('stage-2');
                 stage++;
             } else if (stage === 2) {
-                setTimeout(() => {
-                    giftBox.style.display = 'none';
-                    document.getElementById('messageContainer').style.display = 'block';
-                }, 500);
+                giftBox.classList.add('stage-3');
                 stage++;
-            }
+            } else if (stage === 3) {
+               setTimeout(() => {
+                   giftBox.style.display = 'none';
+                   document.getElementById('messageContainer').style.display = 'block';
+                   startTyping(); // ✅ Now starts typing after revealing the text
+               }, 500);
+               stage++;
+           }
         }
 
         function startTyping() {
