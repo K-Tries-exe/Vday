@@ -7,7 +7,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #ffe6e6;
             color: #b30000;
             margin: 0;
@@ -19,9 +18,11 @@
         .container {
             padding: 80px 50px;
             animation: fadeIn 2s ease-in;
+            text-align: center;
         }
         h1 {
             font-size: 2.5em;
+            text-align: center;
         }
         .gift-box {
             width: 200px;
@@ -43,27 +44,47 @@
         .message-container {
             display: none;
             margin-top: 20px;
+            text-align: left;
+            padding: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .message {
             font-size: 1.5em;
             font-family: 'Courier New', monospace;
-            white-space: pre;
+            white-space: pre-wrap;
             overflow: hidden;
-            border-right: 2px solid;
-            width: 0;
-            animation: typing 3s steps(40, end) forwards, blink 0.7s step-end infinite;
+            display: inline-block;
+            line-height: 1.5;
         }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background: black;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 0.7s infinite;
         }
         @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: black; }
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
         }
     </style>
     <script>
         let stage = 0;
+        let text = `Benim aşkım,
+
+Şimdi anlıyorum ki aşk yakınlıkla ölçülmez, varlıkla ölçülür. Ve sen her zaman benimlesin. Düşüncelerimde, planlarımda, biz fikrine tutunduğum sessiz alanlarda, yalnız kaldığımda seninle geçirdiğim ve beni uyutmaya yardımcı olan kolay zamanları hatırlarken şu anda neler yaptığını hayal ediyorum.
+
+Şu anda birbirimizden ne kadar uzak olursak olalım, bu geçici bir durum. Sahip olduğumuz şey değil. Tekrar buluştuğumuzda dünyanın sessizliğe bürünmesini ve hayatın tüm gürültüsünün susmasını sabırsızlıkla bekliyorum, çünkü senin o küçük sevimli 'Allah kahretsin'lerini duymak bana hayatın başka hiçbir yerinde hissetmediğim bir mutluluk veriyor.
+
+O zamana kadar, her zaman yaptığım gibi seni yanımda taşımaya devam edeceğim.`;
+        let index = 0;
+        let message;
+        let cursor;
+
         function openGift() {
             const giftBox = document.getElementById('giftBox');
             if (stage === 0) {
@@ -73,9 +94,41 @@
                 giftBox.classList.add('stage-2');
                 stage++;
                 setTimeout(() => {
+                    document.getElementById('giftBox').style.display = 'none';
                     document.getElementById('messageContainer').style.display = 'block';
+                    startTyping();
                 }, 500);
             }
+        }
+
+        function startTyping() {
+            message = document.getElementById('message');
+            cursor = document.createElement('span');
+            cursor.classList.add('cursor');
+            message.appendChild(cursor);
+            typeText();
+        }
+
+        function typeText() {
+            let interval = setInterval(() => {
+                if (index < text.length) {
+                    if (text.charAt(index) === '\n') {
+                        message.appendChild(document.createElement('br'));
+                        cursor.remove();
+                        cursor = document.createElement('span');
+                        cursor.classList.add('cursor');
+                        message.appendChild(cursor);
+                    } else {
+                        let charSpan = document.createElement('span');
+                        charSpan.textContent = text.charAt(index);
+                        message.insertBefore(charSpan, cursor);
+                    }
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    cursor.remove();
+                }
+            }, 50);
         }
     </script>
 </head>
@@ -84,14 +137,7 @@
         <h1>🎁 Tap the Gift to Open! 🎁</h1>
         <div id="giftBox" class="gift-box" onclick="openGift()"></div>
         <div id="messageContainer" class="message-container">
-            <p class="message">"Benim aşkım,
-
-Şimdi anlıyorum ki aşk yakınlıkla ölçülmez, varlıkla ölçülür. Ve sen her zaman benimlesin. Düşüncelerimde, planlarımda, biz fikrine tutunduğum sessiz alanlarda, yalnız kaldığımda seninle geçirdiğim ve beni uyutmaya yardımcı olan kolay zamanları hatırlarken şu anda neler yaptığını hayal ediyorum.
-
-Şu anda birbirimizden ne kadar uzak olursak olalım, bu geçici bir durum. Sahip olduğumuz şey değil. Tekrar buluştuğumuzda dünyanın sessizliğe bürünmesini ve hayatın tüm gürültüsünün susmasını sabırsızlıkla bekliyorum, çünkü senin o küçük sevimli 'Allah kahretsin'lerini duymak bana hayatın başka hiçbir yerinde hissetmediğim bir mutluluk veriyor.
-
-O zamana kadar, her zaman yaptığım gibi seni yanımda taşımaya devam edeceğim."
-            </p>
+            <p id="message" class="message"></p>
         </div>
     </div>
 </body>
