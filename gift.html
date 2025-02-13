@@ -69,6 +69,7 @@
             cursor: pointer;
             margin: auto;
             transition: background 0.5s ease-in-out;
+            border-radius: 50%;
         }
         .gift-box.stage-1 {
             background: url('cutes.jpg') no-repeat center;
@@ -150,17 +151,19 @@ O zamana kadar, her zaman yaptığım gibi seni yanımda taşımaya devam edece�
 
         function openGift() {
             const giftBox = document.getElementById('giftBox');
+
             if (stage === 0) {
                 giftBox.classList.add('stage-1');
                 stage++;
             } else if (stage === 1) {
                 giftBox.classList.add('stage-2');
                 stage++;
+            } else if (stage === 2) {
                 setTimeout(() => {
-                    document.getElementById('giftBox').style.display = 'none';
+                    giftBox.style.display = 'none';
                     document.getElementById('messageContainer').style.display = 'block';
-                    startTyping();
                 }, 500);
+                stage++;
             }
         }
 
