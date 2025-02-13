@@ -147,16 +147,21 @@
         setInterval(createHearts, 500);
         function rotateQuotes() {
             const quotes = [
-                "You are my today and all of my tomorrows.",
-                "Her aşk hikayesi güzeldir, ama bizimki en sevdiğim",
-                "I love you more than words can express.",
-                "You are my sunshine on a rainy day."
+                "Köşedeki çiçekçi seni sordu bu sabah",
+                "Bur′da yok" "dedim, selam söyledi",
+                "Tazeymiş gülleri yokluğun gibi",
+                "Yürüdüm biraz, seni düşledim, umudumu sen'le süsledim",
+                "Ne dar sokaklar ne boş duraklar seni unutmama yardım etti",
+                "Senin küçük bir elvedan böyle büyük bir aşkı bitirebilir mi?",
+                "Ne sanıyorsun?",
+                "Bazen bi′ kaldırım taşı, bazen bi' sokak çalgıcısı",
+                "Yani, sen İstanbul'sun"
             ];
             let quoteIndex = 0;
             setInterval(() => {
                 document.getElementById('quote-box').innerText = quotes[quoteIndex];
                 quoteIndex = (quoteIndex + 1) % quotes.length;
-            }, 5000);
+            }, 2000);
         }
         window.onload = rotateQuotes;
     </script>
