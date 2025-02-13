@@ -12,7 +12,7 @@
             color: #b30000;
             margin: 0;
             padding: 0;
-            cursor: url('cursor_128.cur'), auto;
+            cursor: url('https://cdn-icons-png.flaticon.com/128/1077/1077035.png'), auto;
             overflow-x: hidden;
             overflow-y: auto;
             position: relative;
@@ -39,12 +39,21 @@
             width: 45%;
             height: 300px;
         }
+        .gallery-title {
+            font-size: 2em;
+            margin-top: 40px;
+            font-weight: bold;
+        }
         .gallery {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            display: inline-block;
         }
         .gallery img {
             width: 200px;
@@ -57,6 +66,22 @@
         }
         .gallery img:hover {
             transform: scale(1.1);
+        }
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .caption {
+            opacity: 1;
         }
         .modal {
             display: none;
@@ -106,13 +131,32 @@
             <iframe class="video" src="video2.mp4" frameborder="0" allowfullscreen></iframe>
         </div>
         
+        <h2 class="gallery-title">Look How Pretty My Girlfriend Is 💖</h2>
         <div class="gallery">
-            <img src="photo1.jpg" alt="Memory 1" onclick="openModal('photo1.jpg')">
-            <img src="photo2.jpg" alt="Memory 2" onclick="openModal('photo2.jpg')">
-            <img src="photo3.jpg" alt="Memory 3" onclick="openModal('photo3.jpg')">
-            <img src="photo4.jpg" alt="Memory 4" onclick="openModal('photo4.jpg')">
-            <img src="photo5.jpg" alt="Memory 5" onclick="openModal('photo5.jpg')">
-            <img src="photo6.jpg" alt="Memory 6" onclick="openModal('photo6.jpg')">
+            <div class="gallery-item" onclick="openModal('photo1.jpg')">
+                <img src="photo1.jpg" alt="Memory 1">
+                <div class="caption">"Absolutely stunning!"</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('photo2.jpg')">
+                <img src="photo2.jpg" alt="Memory 2">
+                <div class="caption">"A smile that brightens my world!"</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('photo3.jpg')">
+                <img src="photo3.jpg" alt="Memory 3">
+                <div class="caption">"Radiating pure beauty!"</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('photo4.jpg')">
+                <img src="photo4.jpg" alt="Memory 4">
+                <div class="caption">"My favorite person in the world!"</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('photo5.jpg')">
+                <img src="photo5.jpg" alt="Memory 5">
+                <div class="caption">"Perfection in every way!"</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('photo6.jpg')">
+                <img src="photo6.jpg" alt="Memory 6">
+                <div class="caption">"A true work of art!"</div>
+            </div>
         </div>
         
         <div id="imageModal" class="modal" onclick="closeModal()">
